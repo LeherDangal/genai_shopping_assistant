@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodAI - Personalized Food Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="welcome-content">
+            <h1>Hello!</h1>
+            <p>Your personalized food assistant is ready to help</p>
+            <button id="welcome-next" class="next-btn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- User Profile Form -->
+    <div id="profile-screen" class="screen">
+        <div class="form-container">
+            <h2>Create Your Profile</h2>
+            <form id="profile-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" min="1" max="120" required>
+                </div>
+                <div class="form-group">
+                    <label for="sex">Sex</label>
+                    <select id="sex" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="pincode">Pin Code</label>
+                    <input type="text" id="pincode" pattern="\d{6}" required>
+                </div>
+                <button type="submit" class="next-btn">Continue <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dietary Restrictions Screen -->
+    <div id="dietary-screen" class="screen">
+        <div class="form-container">
+            <h2>Dietary Preferences</h2>
+            <form id="dietary-form">
+                <div class="checkbox-group">
+                    <h3>Dietary Restrictions</h3>
+                    <label><input type="checkbox" name="dietary" value="vegetarian"> Vegetarian</label>
+                    <label><input type="checkbox" name="dietary" value="vegan"> Vegan</label>
+                    <label><input type="checkbox" name="dietary" value="halal"> Halal</label>
+                    <label><input type="checkbox" name="dietary" value="kosher"> Kosher</label>
+                    <label><input type="checkbox" name="dietary" value="jain"> Jain</label>
+                    <label><input type="checkbox" name="dietary" value="gluten-free"> Gluten Free</label>
+                    <label><input type="checkbox" name="dietary" value="lactose-free"> Lactose Free</label>
+                    <label><input type="checkbox" name="dietary" value="nut-free"> Nut Free</label>
+                    <div class="other-input">
+                        <input type="text" id="other-dietary" placeholder="Other restrictions">
+                    </div>
+                </div>
+                <button type="submit" class="next-btn">Continue <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Allergies Screen -->
+    <div id="allergies-screen" class="screen">
+        <div class="form-container">
+            <h2>Food Allergies</h2>
+            <form id="allergies-form">
+                <div class="checkbox-group">
+                    <h3>Select all that apply</h3>
+                    <label><input type="checkbox" name="allergies" value="peanuts"> Peanuts</label>
+                    <label><input type="checkbox" name="allergies" value="tree-nuts"> Tree Nuts</label>
+                    <label><input type="checkbox" name="allergies" value="shellfish"> Shellfish</label>
+                    <label><input type="checkbox" name="allergies" value="fish"> Fish</label>
+                    <label><input type="checkbox" name="allergies" value="eggs"> Eggs</label>
+                    <label><input type="checkbox" name="allergies" value="milk"> Milk</label>
+                    <label><input type="checkbox" name="allergies" value="soy"> Soy</label>
+                    <label><input type="checkbox" name="allergies" value="wheat"> Wheat</label>
+                    <div class="other-input">
+                        <input type="text" id="other-allergies" placeholder="Other allergies">
+                    </div>
+                </div>
+                <button type="submit" class="next-btn">Continue <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Food Habits Screen -->
+    <div id="habits-screen" class="screen">
+        <div class="form-container">
+            <h2>Food Habits</h2>
+            <form id="habits-form">
+                <div class="radio-group">
+                    <h3>Your typical diet includes:</h3>
+                    <label><input type="radio" name="habits" value="vegetarian" required> Vegetarian</label>
+                    <label><input type="radio" name="habits" value="non-vegetarian"> Non-Vegetarian</label>
+                    <label><input type="radio" name="habits" value="pescatarian"> Pescatarian</label>
+                    <label><input type="radio" name="habits" value="flexitarian"> Flexitarian (Occasionally eats meat)</label>
+                </div>
+                <div class="form-group">
+                    <label for="cuisine-pref">Preferred Cuisines (comma separated)</label>
+                    <input type="text" id="cuisine-pref" placeholder="e.g., Indian, Italian, Chinese">
+                </div>
+                <button type="submit" class="next-btn">Finish Setup <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="screen">
+        <div class="dashboard-container">
+            <div class="sidebar">
+                <div class="profile-summary">
+                    <img src="images/profile-placeholder.png" alt="Profile" id="profile-img">
+                    <h3 id="profile-name">User</h3>
+                    <p id="location-summary">Location</p>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="active" data-section="search"><i class="fas fa-search"></i> Search</li>
+                        <li data-section="history"><i class="fas fa-history"></i> History</li>
+                        <li data-section="saved"><i class="fas fa-bookmark"></i> Saved</li>
+                        <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="main-content">
+                <div class="content-section active" id="search-section">
+                    <div class="search-header">
+                        <h2>What are you craving today?</h2>
+                        <div class="search-bar">
+                            <input type="text" id="food-search" placeholder="Search for food or ingredients...">
+                            <button id="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="search-filters">
+                            <select id="platform-filter">
+                                <option value="all">All Platforms</option>
+                                <option value="swiggy">Swiggy</option>
+                                <option value="zomato">Zomato</option>
+                                <option value="blinkit">Blinkit</option>
+                                <option value="instamart">Instamart</option>
+                                <option value="zepto">Zepto</option>
+                                <option value="kfc">KFC</option>
+                                <option value="mcdonalds">McDonald's</option>
+                            </select>
+                            <select id="sort-filter">
+                                <option value="relevance">Sort by Relevance</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Rating</option>
+                                <option value="distance">Distance</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-results" id="search-results">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Finding the best options for you...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section" id="history-section">
+                    <h2>Your Search History</h2>
+                    <div class="history-items" id="history-items">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+                <div class="content-section" id="saved-section">
+                    <h2>Saved Items</h2>
+                    <div class="saved-items" id="saved-items">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+                <div class="content-section" id="settings-section">
+                    <h2>Settings</h2>
+                    <div class="settings-options">
+                        <button id="edit-profile-btn">Edit Profile</button>
+                        <button id="update-dietary-btn">Update Dietary Preferences</button>
+                        <button id="update-allergies-btn">Update Allergies</button>
+                        <button id="update-habits-btn">Update Food Habits</button>
+                        <button id="delete-account-btn" class="danger">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>How was this recommendation?</h2>
+            <form id="feedback-form">
+                <input type="hidden" id="feedback-item-id">
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+                <div class="form-group">
+                    <label for="feedback-comments">Additional comments</label>
+                    <textarea id="feedback-comments" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ai-agents.js"></script>
+    <script src="js/scraper.js"></script>
+</body>
+</html>
